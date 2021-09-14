@@ -37,11 +37,19 @@ const create = ({
     };
 
     const checkSuccess = res => {
-        if ((typeof res.data.confirmationId !== 'undefined' && res.data.confirmationId !== null && res.data.confirmationId !== '')
-            || (typeof res.data.orderId !== 'undefined' && res.data.orderId !== null && res.data.orderId !== '')) {
-            return res;
+        console.log("checkSuccess", res);
+        
+        if (res.status !== 0) {
+            throw Error(res.message);
         }
-        throw Error(res.message);
+        
+        return res;
+        
+//         if ((typeof res.data.confirmationId !== 'undefined' && res.data.confirmationId !== null && res.data.confirmationId !== '')
+//             || (typeof res.data.orderId !== 'undefined' && res.data.orderId !== null && res.data.orderId !== '')) {
+//             return res;
+//         }
+//         throw Error(res.message);
     };
 
     /**
